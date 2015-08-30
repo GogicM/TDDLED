@@ -25,7 +25,7 @@ void LedDriver_TurnOn(int ledNumber)
 
 void LedDriver_TurnOff(int ledNumber)
 {
-	*ledsAddress = 0;
+	*ledsAddress &= ~(convertLedNumberToBit(ledNumber));
 }
 
 enum {ALL_LEDS_ON = ~0, ALL_LEDS_OFF = ~ALL_LEDS_ON};
