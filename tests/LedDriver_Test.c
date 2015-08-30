@@ -13,6 +13,9 @@ TEST_GROUP_RUNNER(LedDriver)
 	RUN_TEST_CASE(LedDriver, TurnOnMultipleLeds);
 	RUN_TEST_CASE(LedDriver, TurnOffAnyLed);
 	RUN_TEST_CASE(LedDriver, AllOn);
+	
+	RUN_TEST_CASE(LedDriver, LedMemoryIsNotReadable);
+
 }
 
 TEST_SETUP(LedDriver)
@@ -53,11 +56,7 @@ TEST(LedDriver, TurnOnMultipleLeds)
 }
 
 
-// test 6 je prepravljen, jer da smo samo palili i gasili po jednu diodu
-// nikad ne bismo shvatili da nam dizajn nije dobar...
-// zato smo presli na test 7 gdje upalimo sve, a sada prepravljamo test 6
-// da upali sve pa da ugasi samo jednu - sto je i normalan tok razmisljanja
-// ako hocemo da ugasimo bilo koju (jednu) led-icu.
+// ovo je test 5 a ne 6 kako sam mislio ranije :D
 TEST(LedDriver, TurnOffAnyLed)
 {
 	LedDriver_TurnAllOn();
@@ -70,3 +69,15 @@ TEST(LedDriver, AllOn)
 	LedDriver_TurnAllOn();
 	TEST_ASSERT_EQUAL_HEX16(0xffff, virtualLeds);
 }
+
+
+// sta ako se LED state ne moze direktno vidjeti/procitati?!
+// onda ovi testovi nece raditi kad ih spustimo na hardware...
+// trebacemo malo refactoring raditi :D
+TEST(LedDriver, LedMemoryIsNotReadable)
+{
+	virtualLeds = 0xffff; // ovde smo prepisali 0x0 poslije "setup-a"... kao emulacija nemogucnosti citanja stanja...
+	LedDriver_TurnOn(8);
+	TEST_ASSERT_EQUAL_HEX16(0x80, virtualLeds);
+}
+
