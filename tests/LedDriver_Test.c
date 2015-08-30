@@ -23,6 +23,7 @@ TEST_GROUP_RUNNER(LedDriver)
 	RUN_TEST_CASE(LedDriver, IsOn);
 	RUN_TEST_CASE(LedDriver, OutOfBoundsLedsAreAlwaysOff);
 
+	RUN_TEST_CASE(LedDriver, IsOff);
 }
 
 
@@ -135,3 +136,9 @@ TEST(LedDriver, OutOfBoundsLedsAreAlwaysOff)
 	TEST_ASSERT_FALSE(LedDriver_IsOn(17));
 }
 
+TEST(LedDriver, IsOff)
+{
+	TEST_ASSERT_TRUE(LedDriver_IsOff(12));
+	LedDriver_TurnOn(12);
+	TEST_ASSERT_FALSE(LedDriver_IsOff(12));
+}

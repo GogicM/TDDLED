@@ -82,6 +82,6 @@ uint16_t LedDriver_IsOn(int ledNumber)
 // JE LI OVO FINO STO SMO VEC DODALI CODE UMJESTO DA PRVO IDE TEST?!
 uint16_t LedDriver_IsOff(int ledNumber)
 {
-	return !LedDriver_IsOn(ledNumber);
+	return FALSE; //!LedDriver_IsOn(ledNumber);
 }
 
