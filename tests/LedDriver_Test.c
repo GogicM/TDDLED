@@ -74,7 +74,7 @@ TEST(LedDriver, AllOn)
 // sta ako se LED state ne moze direktno vidjeti/procitati?!
 // onda ovi testovi nece raditi kad ih spustimo na hardware...
 // trebacemo malo refactoring raditi :D
-TEST(LedDriver, LedMemoryIsNotReadable)
+IGNORE_TEST(LedDriver, LedMemoryIsNotReadable)
 {
 	virtualLeds = 0xffff; // ovde smo prepisali 0x0 poslije "setup-a"... kao emulacija nemogucnosti citanja stanja...
 	LedDriver_TurnOn(8);
