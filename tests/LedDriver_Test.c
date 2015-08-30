@@ -19,6 +19,8 @@ TEST_GROUP_RUNNER(LedDriver)
 
 	RUN_TEST_CASE(LedDriver, OutOfBoundsTurnOnDoesNoHarm);
 	RUN_TEST_CASE(LedDriver, OutOfBoundsTurnOffDoesNoHarm);
+
+	RUN_TEST_CASE(LedDriver, IsOn);
 }
 
 
@@ -113,6 +115,14 @@ TEST(LedDriver, OutOfBoundsTurnOffDoesNoHarm)
 	LedDriver_TurnOff(17);
 	LedDriver_TurnOff(3141);
 	TEST_ASSERT_EQUAL_HEX16(0xffff, virtualLeds);
+}
+
+
+TEST(LedDriver, IsOn)
+{
+	TEST_ASSERT_FALSE(LedDriver_IsOn(11));
+	LedDriver_TurnOn(11);
+	TEST_ASSERT_TRUE(LedDriver_IsOn(11));
 }
 
 
