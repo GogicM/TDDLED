@@ -13,9 +13,9 @@
  - Check out-of-bounds values
 
 **TAGS**
-git checkout tag-unity
-git checkout tag-unity_i_makefile
-git checkout prvi_test_build_error
-git checkout prvi_test_failed
-
+git checkout tag-unity<br />
+git checkout tag-unity_i_makefile<br />
+git checkout prvi_test_build_error<br />
+git checkout prvi_test_failed<br />
+<br />
 
