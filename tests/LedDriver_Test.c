@@ -11,6 +11,7 @@ TEST_GROUP_RUNNER(LedDriver)
 	RUN_TEST_CASE(LedDriver, TurnOnLedOne);
 	RUN_TEST_CASE(LedDriver, TurnOffLedOne);
 	RUN_TEST_CASE(LedDriver, TurnOnMultipleLeds);
+	RUN_TEST_CASE(LedDriver, TurnOffAnyLed);
 }
 
 TEST_SETUP(LedDriver)
@@ -49,3 +50,9 @@ TEST(LedDriver, TurnOnMultipleLeds)
 	TEST_ASSERT_EQUAL_HEX16(0x180, virtualLeds);
 }
 
+TEST(LedDriver, TurnOffAnyLed)
+{
+	LedDriver_TurnOn(9);
+	LedDriver_TurnOn(8); LedDriver_TurnOff(8); // upali pa ugasi osmu! ... ne zaboravi dodati u RUN :)
+	TEST_ASSERT_EQUAL_HEX16(0x100, virtualLeds);
+}
