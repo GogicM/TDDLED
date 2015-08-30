@@ -14,9 +14,8 @@ TEST_TEAR_DOWN(LedDriver)
 TEST_GROUP_RUNNER(LedDriver)
 {
 	RUN_TEST_CASE(LedDriver, LedsOffAfterCreate);
-
-	// NE ZABORAVI OVO DODATI :D
 	RUN_TEST_CASE(LedDriver, TurnOnLedOne);
+	RUN_TEST_CASE(LedDriver, TurnOffLedOne);
 }
 
 TEST(LedDriver, LedsOffAfterCreate)
@@ -34,7 +33,7 @@ TEST(LedDriver, TurnOnLedOne)
 	TEST_ASSERT_EQUAL_HEX16(1, virtualLeds);
 }
 
-// ZABORAVICU DODATI RUN OVOG TESTA!
+// DODAO :)
 TEST(LedDriver, TurnOffLedOne)
 {
 	uint16_t virtualLeds;
