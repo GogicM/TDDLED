@@ -35,11 +35,12 @@ void LedDriver_TurnOn(int ledNumber)
 	updateHardware();
 }
 
-// ZAKOMENTARISANO ZA SADA - DOK GA TEST NE ZATRAZI!
+// Napokon, test 10 pao i direktno trazi ovaj code...
+// skidamo komentar!
 void LedDriver_TurnOff(int ledNumber)
 {
-	//if (ledNumber <= 0 || ledNumber > 16)
-	//	return;
+	if (ledNumber <= 0 || ledNumber > 16)
+		return;
 
 	ledsImage &= ~(convertLedNumberToBit(ledNumber));
 	updateHardware();
