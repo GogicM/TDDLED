@@ -34,6 +34,7 @@ TEST(LedDriver, TurnOnLedOne)
 	TEST_ASSERT_EQUAL_HEX16(1, virtualLeds);
 }
 
+// ZABORAVICU DODATI RUN OVOG TESTA!
 TEST(LedDriver, TurnOffLedOne)
 {
 	uint16_t virtualLeds;
