@@ -71,8 +71,8 @@ void LedDriver_TurnAllOn(void)
 	updateHardware();
 }
 
-uint8_t LedDriver_IsOn(int ledNumber)
+uint16_t LedDriver_IsOn(int ledNumber)
 {
-	return FALSE;
+	return (ledsImage & (convertLedNumberToBit(ledNumber)));
 }
 

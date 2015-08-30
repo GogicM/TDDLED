@@ -8,5 +8,5 @@ void LedDriver_Destroy(void);
 void LedDriver_TurnOn(int ledNumber);
 void LedDriver_TurnOff(int ledNumber);
 void LedDriver_TurnAllOn(void);
-uint8_t LedDriver_IsOn(int ledNumber);
+uint16_t LedDriver_IsOn(int ledNumber);
 
