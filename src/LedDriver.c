@@ -28,8 +28,9 @@ void LedDriver_TurnOff(int ledNumber)
 	*ledsAddress = 0;
 }
 
+enum {ALL_LEDS_ON = ~0, ALL_LEDS_OFF = ~ALL_LEDS_ON};
 void LedDriver_TurnAllOn(void)
 {
-	*ledsAddress = 0xffff;
+	*ledsAddress = ALL_LEDS_ON;
 }
 
