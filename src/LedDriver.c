@@ -86,6 +86,6 @@ uint16_t LedDriver_IsOff(int ledNumber)
 
 void LedDriver_TurnAllOff(void)
 {
-	//ledsImage = ALL_LEDS_OFF;
-	//updateHardware();
+	ledsImage = ALL_LEDS_OFF;
+	updateHardware();
 }
