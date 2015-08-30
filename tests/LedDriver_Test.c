@@ -27,6 +27,7 @@ TEST_GROUP_RUNNER(LedDriver)
 	
 	RUN_TEST_CASE(LedDriver, TurnOffMultipleLeds);
 
+	RUN_TEST_CASE(LedDriver, AllOff);
 }
 
 
@@ -160,3 +161,10 @@ TEST(LedDriver, TurnOffMultipleLeds)
 	TEST_ASSERT_EQUAL_HEX16((~0x180)&0xffff, virtualLeds);
 }
 
+
+TEST(LedDriver, AllOff)
+{
+	LedDriver_TurnAllOn();
+	LedDriver_TurnAllOff();
+	TEST_ASSERT_EQUAL_HEX16(0, virtualLeds);
+}
