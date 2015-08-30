@@ -18,7 +18,9 @@ TEST_GROUP_RUNNER(LedDriver)
 	RUN_TEST_CASE(LedDriver, UpperAndLowerBounds);
 
 	RUN_TEST_CASE(LedDriver, OutOfBoundsTurnOnDoesNoHarm);
+	RUN_TEST_CASE(LedDriver, OutOfBoundsTurnOffDoesNoHarm);
 }
+
 
 TEST_SETUP(LedDriver)
 {
@@ -101,3 +103,12 @@ TEST(LedDriver, OutOfBoundsTurnOnDoesNoHarm)
 
 
 
+// IMA LI OVDE NEKA GRESKA?! Kopirali smo samo prethodni test i stavili on->off
+TEST(LedDriver, OutOfBoundsTurnOffDoesNoHarm)
+{
+	LedDriver_TurnOff(-1);
+	LedDriver_TurnOff(0);
+	LedDriver_TurnOff(17);
+	LedDriver_TurnOff(3141);
+	TEST_ASSERT_EQUAL_HEX16(0, virtualLeds);
+}

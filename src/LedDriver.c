@@ -35,12 +35,11 @@ void LedDriver_TurnOn(int ledNumber)
 	updateHardware();
 }
 
-// A-HA odmah smo poletili i ovde da stavimo ovaj check...
-// ima li to igdje pokriveno testom?!
+// ZAKOMENTARISANO ZA SADA - DOK GA TEST NE ZATRAZI!
 void LedDriver_TurnOff(int ledNumber)
 {
-	if (ledNumber <= 0 || ledNumber > 16)
-		return;
+	//if (ledNumber <= 0 || ledNumber > 16)
+	//	return;
 
 	ledsImage &= ~(convertLedNumberToBit(ledNumber));
 	updateHardware();
