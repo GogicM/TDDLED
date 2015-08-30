@@ -6,7 +6,7 @@
  - Multiple LEDs can be turned ~~on~~/off.
  - ~~Turn on all LEDs~~
  - Turn off all LEDs
- - Query LED state
+ - ~~Query LED state~~
  - ~~Check boundary values~~
  - Check out-of-bounds values
    - ~~Beyond max breaks nothing~~
