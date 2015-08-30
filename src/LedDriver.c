@@ -13,7 +13,7 @@ void LedDriver_Destroy(void)
 
 void LedDriver_TurnOn(int ledNumber)
 {
-	*ledsAddress |= (1 << ledNumber); // GRESKA! Kakva?!
+	*ledsAddress |= 1 << (ledNumber - 1); // A-HA! Fix za jedno mjesto :)
 }
 
 void LedDriver_TurnOff(int ledNumber)
