@@ -6,6 +6,8 @@ enum {FIRST_LED = 1, LAST_LED = 16};
 static uint16_t* ledsAddress;
 static uint16_t ledsImage;
 
+
+// HELPERS
 static uint16_t convertLedNumberToBit(int ledNumber)
 {
 	return 1 << (ledNumber - 1);
@@ -21,6 +23,18 @@ static uint8_t IsLedOutOfBounds(int ledNumber)
 	return (ledNumber < FIRST_LED) || (ledNumber > LAST_LED);
 }
 
+static void setLedImageBit(int ledNumber)
+{
+	ledsImage |= convertLedNumberToBit(ledNumber);
+}
+
+static void clearLedImageBit(int ledNumber)
+{
+	ledsImage &= ~convertLedNumberToBit(ledNumber);
+}
+
+
+// DRIVER FUNCTIONS - EXPORTED!
 void LedDriver_Create(uint16_t* address)
 {
 	ledsAddress = address;
@@ -36,16 +50,17 @@ void LedDriver_TurnOn(int ledNumber)
 {
 	if (IsLedOutOfBounds(ledNumber))
 		return;
-
-	ledsImage |= convertLedNumberToBit(ledNumber);
+	
+	setLedImageBit(ledNumber);
 	updateHardware();
 }
+
 void LedDriver_TurnOff(int ledNumber)
 {
 	if (IsLedOutOfBounds(ledNumber))
 		return;
-
-	ledsImage &= ~(convertLedNumberToBit(ledNumber));
+	
+	clearLedImageBit(ledNumber);
 	updateHardware();
 }
 
