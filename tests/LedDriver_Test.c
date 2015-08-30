@@ -103,9 +103,11 @@ TEST(LedDriver, OutOfBoundsTurnOnDoesNoHarm)
 
 
 
-// IMA LI OVDE NEKA GRESKA?! Kopirali smo samo prethodni test i stavili on->off
+// Normalno da ima, nismo ukljucili nista od ledica :)
 TEST(LedDriver, OutOfBoundsTurnOffDoesNoHarm)
 {
+	LedDriver_TurnAllOn();
+
 	LedDriver_TurnOff(-1);
 	LedDriver_TurnOff(0);
 	LedDriver_TurnOff(17);
