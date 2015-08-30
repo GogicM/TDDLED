@@ -24,6 +24,9 @@ TEST_GROUP_RUNNER(LedDriver)
 	RUN_TEST_CASE(LedDriver, OutOfBoundsLedsAreAlwaysOff);
 
 	RUN_TEST_CASE(LedDriver, IsOff);
+	
+	RUN_TEST_CASE(LedDriver, TurnOffMultipleLeds);
+
 }
 
 
@@ -147,4 +150,13 @@ TEST(LedDriver, IsOff)
 	TEST_ASSERT_FALSE(LedDriver_IsOff(12));
 }
 
+
+// ovaj i ocekujemo da ce proci jer je turnoff vec napravljena da to radi...
+TEST(LedDriver, TurnOffMultipleLeds)
+{
+	LedDriver_TurnAllOn();
+	LedDriver_TurnOff(9);
+	LedDriver_TurnOff(8);
+	TEST_ASSERT_EQUAL_HEX16((~0x180)&0xffff, virtualLeds);
+}
 
