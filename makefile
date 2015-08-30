@@ -1,11 +1,8 @@
-CC=gcc
-CFLAGS=-c -Wall
+all: unity LedDriver
 
-all: unity
+.PHONY: all unity
 
 unity:
-    $(MAKE) -C unity all
+	$(MAKE) -C unity all
 
-clean:
-    rm *.o
 
