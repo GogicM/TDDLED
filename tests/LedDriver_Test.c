@@ -53,11 +53,16 @@ TEST(LedDriver, TurnOnMultipleLeds)
 }
 
 
-IGNORE_TEST(LedDriver, TurnOffAnyLed)
+// test 6 je prepravljen, jer da smo samo palili i gasili po jednu diodu
+// nikad ne bismo shvatili da nam dizajn nije dobar...
+// zato smo presli na test 7 gdje upalimo sve, a sada prepravljamo test 6
+// da upali sve pa da ugasi samo jednu - sto je i normalan tok razmisljanja
+// ako hocemo da ugasimo bilo koju (jednu) led-icu.
+TEST(LedDriver, TurnOffAnyLed)
 {
-	LedDriver_TurnOn(9);
-	LedDriver_TurnOn(8); LedDriver_TurnOff(8); // stavi ga na ignore i dodaj drugi koji bi ovo bolje "primjetio"
-	TEST_ASSERT_EQUAL_HEX16(0x100, virtualLeds);
+	LedDriver_TurnAllOn();
+	LedDriver_TurnOff(8);
+	TEST_ASSERT_EQUAL_HEX16(0xff7f, virtualLeds);
 }
 
 TEST(LedDriver, AllOn)
