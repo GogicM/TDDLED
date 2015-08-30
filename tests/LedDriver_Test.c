@@ -10,6 +10,7 @@ TEST_GROUP_RUNNER(LedDriver)
 	RUN_TEST_CASE(LedDriver, LedsOffAfterCreate);
 	RUN_TEST_CASE(LedDriver, TurnOnLedOne);
 	RUN_TEST_CASE(LedDriver, TurnOffLedOne);
+	RUN_TEST_CASE(LedDriver, TurnOnMultipleLeds);
 }
 
 TEST_SETUP(LedDriver)
@@ -39,5 +40,12 @@ TEST(LedDriver, TurnOffLedOne)
 	LedDriver_TurnOn(1);
 	LedDriver_TurnOff(1);
 	TEST_ASSERT_EQUAL_HEX16(0, virtualLeds);
+}
+
+TEST(LedDriver, TurnOnMultipleLeds)
+{
+	LedDriver_TurnOn(9);
+	LedDriver_TurnOn(8);
+	TEST_ASSERT_EQUAL_HEX16(0x180, virtualLeds);
 }
 
