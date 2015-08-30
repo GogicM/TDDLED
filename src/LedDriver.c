@@ -76,6 +76,6 @@ uint16_t LedDriver_IsOn(int ledNumber)
 	if (IsLedOutOfBounds(ledNumber))
 		return FALSE;
 
-	return TRUE; //(ledsImage & (convertLedNumberToBit(ledNumber)));
+	return (ledsImage & (convertLedNumberToBit(ledNumber)));
 }
 
