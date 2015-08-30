@@ -15,6 +15,7 @@ TEST_GROUP_RUNNER(LedDriver)
 	RUN_TEST_CASE(LedDriver, AllOn);
 	
 	RUN_TEST_CASE(LedDriver, LedMemoryIsNotReadable);
+	RUN_TEST_CASE(LedDriver, UpperAndLowerBounds);
 
 }
 
@@ -77,5 +78,13 @@ TEST(LedDriver, LedMemoryIsNotReadable)
 	virtualLeds = 0xffff;
 	LedDriver_TurnOn(8);
 	TEST_ASSERT_EQUAL_HEX16(0x80, virtualLeds);
+}
+
+// uvijek treba provjeriti granice... sjetimo se faktoriela :)
+TEST(LedDriver, UpperAndLowerBounds)
+{
+	LedDriver_TurnOn(1);
+	LedDriver_TurnOn(16);
+	TEST_ASSERT_EQUAL_HEX16(0x8001, virtualLeds);
 }
 
