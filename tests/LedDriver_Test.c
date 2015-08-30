@@ -134,6 +134,10 @@ TEST(LedDriver, OutOfBoundsLedsAreAlwaysOff)
 {
 	TEST_ASSERT_FALSE(LedDriver_IsOn(0));
 	TEST_ASSERT_FALSE(LedDriver_IsOn(17));
+
+	// DODAO
+	TEST_ASSERT_TRUE(LedDriver_IsOff(0));
+	TEST_ASSERT_TRUE(LedDriver_IsOff(17));
 }
 
 TEST(LedDriver, IsOff)
@@ -142,3 +146,5 @@ TEST(LedDriver, IsOff)
 	LedDriver_TurnOn(12);
 	TEST_ASSERT_FALSE(LedDriver_IsOff(12));
 }
+
+
